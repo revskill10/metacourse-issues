@@ -1,0 +1,6 @@
+{
+    "origins": [
+      "https://metacourse.vercel.app",
+      "http://localhost:3000"
+    ]
+  }
