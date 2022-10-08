@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 3001;
 const errorHandler = require('../../errors/error-handler');
+const { BadRequestError } = require('../../errors/custom-error');
 const { MathServiceClient } = require('./client');
 
 
@@ -15,6 +16,9 @@ app.post('/api/math', async (req, res, next) => {
 		if (op === 'sum') {
 			const x = parameters[0];
 			const y = parameters[1];
+			if (isNaN(x) || isNaN(y)) {
+				throw new BadRequestError('Invalid arguments');
+			}
 			const mathServiceClient = new MathServiceClient();
 			const response = await mathServiceClient.sum({ x, y });
 			const result = response.result;

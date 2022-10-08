@@ -18,8 +18,16 @@ class InternalServerError extends BaseError {
 	}
 }
 
+class BadRequestError extends BaseError {
+	constructor(message) {
+		super(message);
+		this.statusCode = HttpStatusCode.BAD_REQUEST;
+	}
+}
+
 module.exports = {
 	HttpStatusCode,
 	BaseError,
-	InternalServerError
+	InternalServerError,
+	BadRequestError
 };
