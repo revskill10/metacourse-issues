@@ -8,6 +8,7 @@ const { MathServiceClient } = require('./client');
 app.use(express.json());
 
 //api
+// TODO: refactor into another function
 app.post('/api/math', async (req, res, next) => {
 	try {
 		const { op, parameters } = req.body;
