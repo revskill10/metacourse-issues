@@ -17,9 +17,15 @@ app.post('/api/math', async (req, res, next) => {
 			if (isNaN(x) || isNaN(y)) {
 				throw new BadRequestError('Invalid arguments');
 			}
-			const mathServiceClient = new MathServiceClient();
-			const response = await mathServiceClient.sum({ x, y });
-			const result = response.result;
+			let result = {};
+			try {
+				const mathServiceClient = new MathServiceClient();
+				const response = await mathServiceClient.sum({ x, y });
+				result = response.result;
+			} catch (error) {
+				console.log('MathService error');
+				throw new BadRequestError('MathService error');
+			}
 			res.json({ result });
 		}
 	} catch (err) {
