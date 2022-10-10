@@ -5,9 +5,7 @@ const errorHandler = require('../../errors/error-handler');
 const { BadRequestError } = require('../../errors/custom-error');
 const { MathServiceClient } = require('./client');
 
-
 app.use(express.json());
-
 
 //api
 app.post('/api/math', async (req, res, next) => {
