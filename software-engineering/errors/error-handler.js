@@ -1,7 +1,7 @@
 const { HttpStatusCode } = require('./custom-error');
 
 module.exports = (err, req, res, next) => {
-	let customError = {
+	const customError = {
 		//set default error
 		statusCode: err.statusCode || HttpStatusCode.INTERNAL_SERVER,
 		message: err.message || 'Internal Server Error!'
